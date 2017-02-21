@@ -3,7 +3,7 @@ ext {
   aspectJVersion = '1.8.10'
   bcpkixVersion  = '1.56'
   bcprovVersion  = '1.56'
-  cglibVersion = '2.2.2'
+  cglibVersion = '3.2.4'
   commonsHttpClientVersion = '4.3.6'
   commonsLoggingVersion = '1.2'
   flywayVersion = '4.0'
