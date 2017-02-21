@@ -5,6 +5,8 @@ dependencies {
 
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: parent.jacksonVersion
 
+  compile group: 'org.apache.httpcomponents', name: 'httpclient', version: parent.commonsHttpClientVersion
+
   compile group: 'org.springframework', name: 'spring-web', version: parent.springVersion
   compile group: 'org.springframework', name: 'spring-webmvc', version: parent.springVersion
   compile group: 'org.springframework.security', name: 'spring-security-config', version: parent.springSecurityVersion

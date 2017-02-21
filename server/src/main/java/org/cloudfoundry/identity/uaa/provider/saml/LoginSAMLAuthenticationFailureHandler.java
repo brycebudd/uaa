@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationServiceExceptio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.savedrequest.DefaultSavedRequest;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 
 import static org.cloudfoundry.identity.uaa.web.UaaSavedRequestAwareAuthenticationSuccessHandler.SAVED_REQUEST_SESSION_ATTRIBUTE;
 
@@ -44,10 +46,13 @@ public class LoginSAMLAuthenticationFailureHandler extends SimpleUrlAuthenticati
 
                     if (redirectURI != null && redirectURI.length > 0) {
                         URI uri = URI.create(redirectURI[0]);
-                        URIBuilder uriBuilder = new URIBuilder(uri);
-                        uriBuilder.addParameter("error", "access_denied");
-                        uriBuilder.addParameter("error_description", exception.getMessage());
-                        redirectTo = uriBuilder.toString();
+                        UriComponentsBuilder uriBuilder = UriComponentsBuilder.newInstance()
+                            .uri(uri)
+                            .queryParam("error", "access_denied")
+                            .queryParam("error_description", URLEncoder.encode(exception.getMessage()));
+
+                        //assume that the URL we had on file already was properly encoded
+                        redirectTo = uriBuilder.build(false).toUriString();
 
                         if (LOG.isDebugEnabled()) {
                             LOG.debug("Error redirect to: " + redirectTo);

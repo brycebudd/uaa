@@ -34,11 +34,11 @@ public class LoginSAMLAuthenticationFailureHandlerTest {
         request.setSession(session);
         MockHttpServletResponse response = new MockHttpServletResponse();
 
-        LoginSAMLException exception = new LoginSAMLException("Denied!");
+        LoginSAMLException exception = new LoginSAMLException("Denied & Denied!");
         handler.onAuthenticationFailure(request, response, exception);
 
         String actual = response.getRedirectedUrl();
-        assertEquals("https://example.com?error=access_denied&error_description=Denied%21", actual);
+            assertEquals("https://example.com?error=access_denied&error_description=Denied+%26+Denied%21", actual);
         int status = response.getStatus();
         assertEquals(302, status);
     }
