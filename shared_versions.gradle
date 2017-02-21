@@ -6,7 +6,7 @@ ext {
   cglibVersion = '3.2.4'
   commonsHttpClientVersion = '4.5.3'
   commonsLoggingVersion = '1.2'
-  flywayVersion = '4.0'
+  flywayVersion = '4.1.1'
   guavaVersion = '19.0'
   hamcrestVersion = '1.3'
   hibernateValidatorVersion = '4.3.1.Final'
