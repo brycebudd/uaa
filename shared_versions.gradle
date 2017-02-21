@@ -1,6 +1,6 @@
 ext {
   apacheLdapApiVersion = '1.0.0-M22'
-  aspectJVersion = '1.6.9'
+  aspectJVersion = '1.8.10'
   bcpkixVersion  = '1.56'
   bcprovVersion  = '1.56'
   cglibVersion = '2.2.2'
